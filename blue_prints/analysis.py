@@ -1,18 +1,13 @@
-from flask import Blueprint, jsonify, request
-from db import db
-from services.analysis import get_attack_analys
-
-analysis_bp = Blueprint('analysis', __name__)
-
+from services.analysis import get_attack_analysis
 from flask import Blueprint, jsonify
-from db import db  # ודא שאתה מייבא את ה-db שלך
 
 analysis_bp = Blueprint('analysis', __name__)
 
+analysis_bp = Blueprint('analysis', __name__)
 
 @analysis_bp.route('/api/attack/<int:year>', methods=['GET'])
 def get_attack_city(year):
-    result = get_attack_analys(year)
+    result = get_attack_analysis(year)
     if result:
         return jsonify({
             'air_force': result['air_force'],
