@@ -9,9 +9,9 @@ class Mission(db.Model):
     air_force = db.Column(db.String(255))
     unit_id = db.Column(db.Integer)
     aircraft_series = db.Column(db.String(255))
-    location_id = db.Column(db.Integer, foreign_key=True)
+    location_id = db.Column(db.Integer, db.ForeignKey('location.location_id'))
 
-    def get_dict(self):
+    def to_dict(self):
         return {
             'mission_id': self.mission_id,
             'mission_date': self.mission_date,
@@ -31,7 +31,7 @@ class Location(db.Model):
     loc_lat = db.Column(db.Float)
     loc_lon = db.Column(db.Float)
 
-    def get_dict(self):
+    def to_dict(self):
         return {
             'location_id': self.location_id,
             'loc_country': self.loc_country,
