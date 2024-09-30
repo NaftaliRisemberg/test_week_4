@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
 from blue_prints.mission import mission_bp
 from blue_prints.analysis import analysis_bp
@@ -13,6 +12,7 @@ db.init_app(app)
 
 app.register_blueprint(mission_bp)
 app.register_blueprint(analysis_bp)
+
 with app.app_context():
     try:
         db.session.execute(text('SELECT 1'))
